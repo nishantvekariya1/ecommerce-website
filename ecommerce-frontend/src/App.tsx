@@ -6,6 +6,7 @@ import Loader from "./components/loader";
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Shipping = lazy(() => import("./pages/Shipping"));
 
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
@@ -34,6 +35,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+
+          {/* Logged in user Routers */}
+          <Route>
+            <Route path="/shipping" element={<Shipping />} />
+          </Route>
 
           {/* Admin Routers */}
           {/* <Route element={<ProtectedRoute isAuthenticated={true} adminRoute={true} isAdmin={true} />}> */}
