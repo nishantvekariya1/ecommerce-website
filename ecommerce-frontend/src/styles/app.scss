@@ -35,6 +35,7 @@ $color3: rgb(0, 104, 136);
 @import "./home";
 @import "./cart";
 @import "./shipping";
+@import "./login";
 
 @import "./admin-styles/dashboard";
 @import "./admin-styles/products";
@@ -42,6 +43,12 @@ $color3: rgb(0, 104, 136);
 @import "./admin-styles/dashboardapp";
 @import "./admin-styles/mediaquery";
 
+
+.heading {
+    @include heading;
+    margin: 1rem 0;
+    text-align: center;
+}
 
 .header {
     @include flex(row, flex-end, stretch, 1.2rem);
