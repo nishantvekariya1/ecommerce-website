@@ -3,6 +3,7 @@ import NodeCache from 'node-cache';
 import { config } from 'dotenv';
 import morgan from 'morgan';
 import Stripe from 'stripe';
+import cors from 'cors';
 
 import userRoute from "./routes/user.js";
 import productRoute from "./routes/products.js";
@@ -30,6 +31,7 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 app.get("/", (req,res) => {
     res.send("API Wprking with /api/v1");
