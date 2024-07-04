@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { useSelector } from "react-redux";
 import { RootState, server } from "../../../redux/store";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useDeleteProductMutation, useProductDetailsQuery, useUpdateProductMutation } from "../../../redux/api/productAPI";
 import { Skeleton } from "../../../components/loader";
 import { responseToast } from "../../../utils/features";
@@ -100,7 +100,7 @@ const Productmanagement = () => {
     }
   }, [data]);
 
-  // if (isError) return <Navigate to={"/404"} />;
+  if (isError) return <Navigate to={"/404"} />;
 
   return (
     <div className="admin-container">
