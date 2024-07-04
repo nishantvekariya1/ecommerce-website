@@ -91,3 +91,8 @@ export type OrderDetailsResponse = {
   success: boolean;
   order: Order;
 };
+
+export type AllUsersResponse = {
+  success: boolean;
+  users: User[];
+};
