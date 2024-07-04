@@ -4,11 +4,14 @@ import { useCategoriesQuery, useSearchProductsQuery } from '../redux/api/product
 import { CustomError } from '../types/api-types';
 import toast from 'react-hot-toast';
 import { Skeleton } from '../components/loader';
+import { useDispatch } from 'react-redux';
+import { CartItem } from '../types/types';
+import { addToCart } from '../redux/reducer/cartReducer';
 
 const Search = () => {
 
-  const {data: categoriesResponse,isLoading: loadingCategories,isError,error} = useCategoriesQuery("");
-  
+  const { data: categoriesResponse, isLoading: loadingCategories, isError, error } = useCategoriesQuery("");
+
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
   const [maxPrice, setMaxPrice] = useState(100000);
@@ -28,8 +31,6 @@ const Search = () => {
     price: maxPrice,
   });
 
-  // console.log(searchedData);
-  
 
   const isPrevPage = page > 1;
   const isNextPage = page < 4;
@@ -44,7 +45,12 @@ const Search = () => {
     toast.error(err.data.message);
   }
 
-  const addToCartHandler = () => {
+  const dispatch = useDispatch();
+
+  const addToCartHandler = (cartItem: CartItem) => {
+    if (cartItem.stock < 1) return toast.error("Out of Stock");
+    dispatch(addToCart(cartItem));
+    toast.success("Added to cart");
   };
 
   return (
@@ -84,7 +90,7 @@ const Search = () => {
                   {i.toUpperCase()}
                 </option>
               ))}
-            
+
           </select>
         </div>
       </aside>
@@ -97,7 +103,7 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-          {productLoading ? (
+        {productLoading ? (
           <Skeleton length={10} />
         ) : (
           <div className="search-product-list">
@@ -115,7 +121,7 @@ const Search = () => {
           </div>
         )}
 
-          {searchedData && searchedData.totalPage > 1 && (
+        {searchedData && searchedData.totalPage > 1 && (
           <article>
             <button
               disabled={!isPrevPage}
