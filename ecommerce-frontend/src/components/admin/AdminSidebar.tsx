@@ -16,6 +16,7 @@ import {
 } from "react-icons/ri";
 import { Link, Location, useLocation } from "react-router-dom";
 import { IconType } from "react-icons";
+import Logo from "../../assets/logo2.png";
 
 const AdminSidebar = () => {
   const location = useLocation();
@@ -49,17 +50,17 @@ const AdminSidebar = () => {
         style={
           phoneActive
             ? {
-                width: "20rem",
-                height: "100vh",
-                position: "fixed",
-                top: 0,
-                left: showModal ? "0" : "-20rem",
-                transition: "all 0.5s",
-              }
+              width: "20rem",
+              height: "100vh",
+              position: "fixed",
+              top: 0,
+              left: showModal ? "0" : "-20rem",
+              transition: "all 0.5s",
+            }
             : {}
         }
       >
-        <h2>Logo.</h2>
+        <img className="dashboard-logo" src={Logo} alt="logo" />
         <DivOne location={location} />
         <DivTwo location={location} />
         <DivThree location={location} />

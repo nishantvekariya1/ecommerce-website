@@ -12,8 +12,8 @@ interface PropsType {
 }
 
 const Header = ({ user }: PropsType) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const logoutHandler = async () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const logoutHandler = async () => {
     try {
       await signOut(auth);
       toast.success("Sign Out Successfully");
@@ -25,33 +25,33 @@ const Header = ({ user }: PropsType) => {
   return (
     <nav className="header">
 
-        <Link onClick={() => setIsOpen(false)} to={"/"}>HOME</Link>
-        <Link onClick={() => setIsOpen(false)} to={"/search"}><FaSearch /></Link>
-        <Link onClick={() => setIsOpen(false)} to={"/cart"}><FaShoppingBag /></Link>
+      <Link onClick={() => setIsOpen(false)} to={"/"}>HOME</Link>
+      <Link onClick={() => setIsOpen(false)} to={"/search"}><FaSearch /></Link>
+      <Link onClick={() => setIsOpen(false)} to={"/cart"}><FaShoppingBag /></Link>
 
-        {
-            user?._id ? (
-                <>
-                    <button onClick={() => setIsOpen((prev) => !prev)}><FaUser /></button>
-                    <dialog open={isOpen}>
-                        <div>
-                            {user.role === "admin" && (
-                                <Link onClick={() => setIsOpen(false)} to="/admin/dashboard">
-                                Admin
-                                </Link>
-                            )}
+      {
+        user?._id ? (
+          <>
+            <button onClick={() => setIsOpen((prev) => !prev)}><FaUser /></button>
+            <dialog open={isOpen}>
+              <div>
+                {user.role === "admin" && (
+                  <Link onClick={() => setIsOpen(false)} to="/admin/dashboard">
+                    Admin
+                  </Link>
+                )}
 
-                            <Link onClick={() => setIsOpen(false)} to="/orders">
-                                Orders
-                            </Link>
-                            <button onClick={logoutHandler}>
-                                <FaSignOutAlt />
-                            </button>
-                        </div>
-                    </dialog>
-                </>
-            ) : (<Link to={"/login"}><FaSignInAlt /></Link>)
-        }
+                <Link onClick={() => setIsOpen(false)} to="/orders">
+                  Orders
+                </Link>
+                <button onClick={logoutHandler}>
+                  <FaSignOutAlt />
+                </button>
+              </div>
+            </dialog>
+          </>
+        ) : (<Link to={"/login"}><FaSignInAlt /></Link>)
+      }
 
     </nav>
   )
