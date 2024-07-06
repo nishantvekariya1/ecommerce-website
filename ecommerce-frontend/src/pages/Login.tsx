@@ -6,10 +6,12 @@ import { auth } from '../firebase';
 import { useLoginMutation } from '../redux/api/userAPI';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { MessageResponse } from '../types/api-types';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [gender, setGender] = useState("");
   const [date, setDate] = useState("");
+  const navigate = useNavigate();
 
   const [login] = useLoginMutation();
 
@@ -40,6 +42,7 @@ const Login = () => {
 
       if ("data" in res) {
         // toast.success(res.data.message);
+        navigate("/");
         toast.success(`Welcome ${user.displayName}`);
       } else {
         const error = res.error as FetchBaseQueryError;
