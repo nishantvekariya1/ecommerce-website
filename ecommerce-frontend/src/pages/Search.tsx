@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProductCard from '../components/product-card';
 import { useCategoriesQuery, useSearchProductsQuery } from '../redux/api/productAPI';
 import { CustomError } from '../types/api-types';

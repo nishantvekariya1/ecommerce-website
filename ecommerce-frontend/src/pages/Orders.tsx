@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import TableHOC from '../components/admin/TableHOC';
 import { Column } from 'react-table';
 import { Link } from 'react-router-dom';
