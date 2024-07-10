@@ -48,7 +48,7 @@ export const productAPI = createApi({
         method: "POST",
         body: formData,
       }),
-      invalidatesTags:["product"],
+      invalidatesTags: ["product"],
     }),
 
     updateProduct: builder.mutation<MessageResponse, UpdateProductRequest>({
@@ -70,7 +70,7 @@ export const productAPI = createApi({
 
 
 
-    }),
+  }),
 });
 
-export const {useLatestProductsQuery,useAllProductsQuery,useCategoriesQuery,useSearchProductsQuery,useNewProductMutation,useProductDetailsQuery,useUpdateProductMutation,useDeleteProductMutation} = productAPI;
+export const { useLatestProductsQuery, useAllProductsQuery, useCategoriesQuery, useSearchProductsQuery, useNewProductMutation, useProductDetailsQuery, useUpdateProductMutation, useDeleteProductMutation } = productAPI;

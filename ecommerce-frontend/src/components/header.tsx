@@ -5,6 +5,8 @@ import { User } from "../types/types";
 import toast from "react-hot-toast";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
+import { userNotExist } from "../redux/reducer/userReducer";
 
 
 interface PropsType {
@@ -13,9 +15,11 @@ interface PropsType {
 
 const Header = ({ user }: PropsType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const logoutHandler = async () => {
     try {
       await signOut(auth);
+      dispatch(userNotExist())
       toast.success("Sign Out Successfully");
       setIsOpen(false);
     } catch (error) {

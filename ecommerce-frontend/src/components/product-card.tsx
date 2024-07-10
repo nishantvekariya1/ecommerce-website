@@ -13,6 +13,8 @@ type ProductsProps = {
 
 
 const ProductCard = ({ productId, price, name, photo, stock, handler }: ProductsProps) => {
+  console.log(`${server}/${photo}`);
+
   return (
     <div className="product-card">
       <img src={`${server}/${photo}`} alt={name} />

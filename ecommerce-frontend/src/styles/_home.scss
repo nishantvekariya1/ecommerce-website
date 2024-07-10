@@ -5,14 +5,14 @@
     height: calc(100vh - 4rem);
     width: 100%;
 
-    >section {
+    > section {
         width: 100%;
         height: 18.75rem;
         margin: auto;
         background: url("../assets/cover.jpg") no-repeat center / cover;
     }
 
-    >h1 {
+    > h1 {
         @include heading(1px);
         margin-top: 3rem;
         @include flex(row, space-between, center);
@@ -22,7 +22,7 @@
         font-size: 1rem;
     }
 
-    >main {
+    > main {
         width: 100%;
         flex: 1;
         display: flex;
@@ -44,7 +44,7 @@
     position: relative;
     background-color: white;
 
-    &:hover>div {
+    &:hover > div {
         opacity: 1;
     }
 
@@ -59,7 +59,7 @@
         font-size: 1.1rem;
     }
 
-    >div {
+    > div {
         opacity: 0;
         position: absolute;
         @include square(100%);

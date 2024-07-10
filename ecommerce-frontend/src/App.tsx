@@ -11,6 +11,7 @@ import { getUser } from "./redux/api/userAPI";
 import { RootState } from "./redux/store";
 import ProtectedRoute from "./components/protected-route";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/footer";
 
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
@@ -108,6 +109,7 @@ const App = () => {
         </Routes>
       </Suspense>
       <Toaster position="bottom-center" />
+      <Footer />
     </Router>
   )
 }
